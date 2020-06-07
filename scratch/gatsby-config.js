@@ -5,11 +5,11 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'src',
-        path: `${__dirname}/src/`,
-      },
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      }
     },
     'gatsby-transformer-remark',
   ],
