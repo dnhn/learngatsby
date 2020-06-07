@@ -1,9 +1,8 @@
 import React from 'react';
-import Nav from '../components/nav';
+import Layout from '../components/layout';
 
 export default () => (
-  <>
-    <Nav />
-    Scratch
-  </>
+  <Layout>
+    <h1>Scratch</h1>
+  </Layout>
 );
