@@ -3,6 +3,6 @@ import Layout from '../components/layout';
 
 export default () => (
   <Layout>
-    <h1>404</h1>
+    <h2>404</h2>
   </Layout>
 );
