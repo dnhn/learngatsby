@@ -4,6 +4,8 @@ module.exports = {
     description: 'Build Gatsby from scratch',
   },
   plugins: [
+    'gatsby-plugin-sass',
+    'gatsby-plugin-layout',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -17,7 +19,11 @@ module.exports = {
         plugins: ['gatsby-remark-external-links'],
       },
     },
-    'gatsby-plugin-sass',
-    'gatsby-plugin-layout',
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/utils/typography',
+      },
+    }
   ],
 };
