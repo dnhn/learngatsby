@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Layout from '../components/layout';
 
 export default ({ data }) => (
-  <Layout>
+  <div>
     <h2>Home</h2>
     <span>{data.allMarkdownRemark.totalCount} posts</span>
     {data.allMarkdownRemark.edges.map(({ node }) => (
@@ -15,7 +14,7 @@ export default ({ data }) => (
         <p>{node.excerpt}</p>
       </div>
     ))}
-  </Layout>
+  </div>
 );
 
 export const query = graphql`

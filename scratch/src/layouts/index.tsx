@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import Nav from './nav';
+import Nav from '../components/nav';
 
 export default ({ children }) => {
   const data = useStaticQuery(

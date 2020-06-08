@@ -2,7 +2,6 @@
 title: "Markdown post"
 date: "2020-06-07"
 ---
-# Markdown
 This is a post written in [Markdown](https://localhost:8000) syntax.
 
 Ordered list:
