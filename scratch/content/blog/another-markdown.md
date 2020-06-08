@@ -1,5 +1,5 @@
 ---
-title: "Another Markdown post"
+title: "Một bài viết Markdown khác"
 date: "2020-06-08"
 ---
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. [Curabitur non euismod justo](http://localhost:8000). Pellentesque lacinia justo nec lacus semper, at sollicitudin sem semper. Cras ultricies faucibus vestibulum. Phasellus sodales lobortis risus ac egestas. Cras quis pulvinar ante, vel rhoncus magna. Nunc quis tincidunt orci. Proin neque mauris, dignissim quis pharetra et, convallis sed est. Curabitur vestibulum orci felis, id venenatis ligula venenatis eget. Aenean venenatis lorem ut elit imperdiet placerat. Maecenas sagittis eget sem pretium finibus.
+Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. [Lorem Ipsum](https://lipsum.com) có ưu điểm hơn so với đoạn văn bản chỉ gồm nội dung kiểu _“Nội dung, nội dung, nội dung”_ là nó khiến văn bản giống thật hơn, bình thường hơn. Nhiều phần mềm thiết kế giao diện web và dàn trang ngày nay đã sử dụng __*[Lorem Ipsum](https://lipsum.com)*__ làm đoạn văn bản giả, và nếu bạn thử tìm các đoạn __“[Lorem ipsum](https://lipsum.com)”__ trên mạng thì sẽ khám phá ra nhiều trang web hiện vẫn đang trong quá trình xây dựng. Có nhiều phiên bản khác nhau đã xuất hiện, đôi khi do vô tình, nhiều khi do cố ý (xen thêm vào những câu hài hước hay thông tục).

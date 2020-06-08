@@ -1,14 +1,14 @@
 ---
-title: "Markdown post"
+title: "Bài viết bằng Markdown"
 date: "2020-06-07"
 ---
-This is a post written in [Markdown](https://localhost:8000) syntax.
+Bài viết này được viết bằng cú pháp [Markdown](https://localhost:8000).
 
-Ordered list:
-1. Item 1
-1. Item 2
-1. Item 3
+Danh sách có thứ tự:
+1. Đề mục 1
+1. Đề mục 2
+1. Đề mục 3
 
-Unordered list:
-- Item
-- Another item
+Danh sách không có thứ tự:
+- Cái này
+- Cái khác
