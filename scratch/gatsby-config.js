@@ -11,7 +11,12 @@ module.exports = {
         path: `${__dirname}/content/blog`,
       }
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: ['gatsby-remark-external-links'],
+      },
+    },
     'gatsby-plugin-sass',
   ],
 };
