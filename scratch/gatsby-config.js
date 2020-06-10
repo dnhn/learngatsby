@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Scratch Gatsby',
+    title: 'Wh',
     description: 'Build Gatsby from scratch',
   },
   plugins: [
@@ -8,11 +8,18 @@ module.exports = {
     'gatsby-plugin-layout',
     'gatsby-plugin-postcss',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/blog`,
-      }
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/assets`,
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',
