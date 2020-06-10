@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 export default ({ data: { markdownRemark: post } }) => (
   <div>
     <h2>{post.frontmatter.title}</h2>
+    <h4>{post.timeToRead} phút</h4>
     <div dangerouslySetInnerHTML={{ __html: post.html }} />
   </div>
 );
@@ -15,6 +16,7 @@ export const query = graphql`
       frontmatter {
         title
       }
+      timeToRead
     }
   }
 `;
