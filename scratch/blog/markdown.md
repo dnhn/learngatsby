@@ -1,6 +1,6 @@
 ---
-title: "Bài viết bằng Markdown"
-date: "2020-06-07"
+title: 'Bài viết bằng Markdown'
+date: '2020-06-07'
 ---
 Bài viết này được viết bằng cú pháp [Markdown](https://localhost:8000).
 
