@@ -1,6 +1,7 @@
 ---
-title: 'Long post'
-date: '2020-06-10'
+title: Long post
+datetime: 2020-06-10
+slug: long-post
 ---
 Vivamus vitae leo non velit varius luctus. Suspendisse at lorem eu tellus ultricies dignissim. Proin posuere velit sed orci fringilla dignissim. Integer efficitur mi et purus iaculis dignissim. Nullam semper nec ante a tincidunt. Vestibulum sollicitudin lectus id porta accumsan. Vestibulum semper eros vitae velit posuere congue. Curabitur quis orci eleifend, imperdiet odio quis, fermentum nulla. Nullam finibus at lectus id posuere. Quisque finibus et tellus vel molestie. Nam congue, nunc vitae porta pretium, orci est tincidunt nibh, vitae dignissim nisi tellus eu lorem. Pellentesque eget nunc laoreet, ornare velit sed, tempor augue. Phasellus viverra sodales eros a cursus. Nulla sem felis, euismod eu euismod at, laoreet eu massa. Nam id turpis non libero pulvinar rutrum eu id massa.
 

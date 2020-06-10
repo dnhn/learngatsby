@@ -10,7 +10,7 @@ export default ({ data }) => (
         <Link to={node.fields.slug}>
           <h3>{node.frontmatter.title}</h3>
         </Link>
-        <span>{node.frontmatter.date}</span>
+        <span>{node.frontmatter.datetime}</span>
         <p>{node.excerpt}</p>
       </div>
     ))}
@@ -19,14 +19,14 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___datetime], order: DESC }) {
       totalCount
       edges {
         node {
           id
           frontmatter {
             title
-            date(formatString: "D MMMM, YYYY", locale: "vi")
+            datetime(formatString: "D MMMM, YYYY", locale: "vi")
           }
           fields {
             slug

@@ -1,6 +1,7 @@
 ---
-title: 'Code'
-date: '2020-06-09'
+title: Code
+datetime: 2020-06-09
+slug: code
 ---
     export default ({ data }) => <h1>{data.site.siteMetadata.title}</h1>;
 
