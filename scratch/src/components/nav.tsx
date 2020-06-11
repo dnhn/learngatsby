@@ -1,15 +1,31 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
-export default () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/">Blog</Link>
-      </li>
-      <li>
-        <Link to="/about">Giới thiệu</Link>
-      </li>
-    </ul>
-  </nav>
-);
+export default () => {
+  const {
+    site: { siteMetadata: { nav } },
+  } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          nav {
+            path
+            name
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <nav>
+      <ul>
+        {nav.map(n => (
+          <li key={n.path}>
+            <Link to={n.path}>{n.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+};

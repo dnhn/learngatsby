@@ -1,7 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: 'Wh',
+    title: 'Qs',
     description: 'Build Gatsby from scratch',
+    nav: [
+      { path: '/', name: '[-1]' },
+      { path: '/q', name: '*' },
+      { path: '/me', name: 'Tôi' },
+    ],
   },
   plugins: [
     'gatsby-plugin-sass',

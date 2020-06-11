@@ -1,5 +1,5 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const BlogPost = require.resolve('./src/templates/blog-post.tsx');
+const BlogPost = require.resolve('./src/templates/q.tsx');
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   createTypes(`
