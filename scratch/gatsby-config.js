@@ -32,6 +32,13 @@ module.exports = {
         plugins: [
           'gatsby-remark-external-links',
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: '#',
+              removeAccents: true,
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               disableBgImageOnAlpha: true,
