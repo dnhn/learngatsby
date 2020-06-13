@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "serve": "gatsby serve",
+    "serve": "npm run build && gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "gatsby-plugin-postcss": "^2.3.3",
     "gatsby-plugin-sass": "^2.3.3",
     "gatsby-plugin-sharp": "^2.6.11",
+    "gatsby-plugin-sitemap": "^2.4.5",
     "gatsby-plugin-typography": "^2.5.3",
     "gatsby-remark-autolink-headers": "^2.3.5",
     "gatsby-remark-copy-linked-files": "^2.3.5",

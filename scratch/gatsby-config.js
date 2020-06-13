@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: 'http://localhost',
     title: 'Qs',
     description: 'Build Gatsby from scratch',
     nav: [
@@ -14,6 +15,7 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
