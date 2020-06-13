@@ -63,6 +63,40 @@ module.exports = {
       options: {
         pathToConfigModule: 'src/utils/typography',
       },
+    },
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        feeds: [
+          {
+            output: 'rss.xml',
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: {
+                    order: DESC,
+                    fields: [frontmatter___datetime]
+                  }
+                ) {
+                  edges {
+                    node {
+                      frontmatter {
+                        title
+                        datetime
+                      }
+                      fields {
+                        slug
+                      }
+                      excerpt
+                      html
+                    }
+                  }
+                }
+              }
+            `,
+          },
+        ],
+      },
     }
   ],
 };
