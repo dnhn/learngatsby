@@ -69,6 +69,7 @@ module.exports = {
       options: {
         feeds: [
           {
+            title: 'Qs RSS Feed',
             output: 'rss.xml',
             query: `
               {
@@ -94,6 +95,26 @@ module.exports = {
                 }
               }
             `,
+            serialize: ({
+              query: {
+                site: { siteMetadata: { siteUrl } },
+                allMarkdownRemark,
+              },
+            }) =>
+              allMarkdownRemark.edges.map(({
+                node: {
+                  frontmatter,
+                  excerpt,
+                  fields: { slug },
+                  html,
+                },
+              }) => ({
+                ...frontmatter,
+                description: excerpt,
+                url: siteUrl + slug,
+                guid: siteUrl + slug,
+                custom_elements: [{ 'content:encoded': html }],
+              })),
           },
         ],
       },
