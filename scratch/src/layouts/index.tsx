@@ -1,25 +1,11 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import SEO from '../components/seo';
 import Nav from '../components/nav';
 
-export default ({ children }) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `
-  );
-
-  return (
-    <main>
-      <h1>{data.site.siteMetadata.title}</h1>
-      <Nav />
-      {children}
-    </main>
-  );
-};
+export default ({ children }) => (
+  <main>
+    <SEO />
+    <Nav />
+    {children}
+  </main>
+);
