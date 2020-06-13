@@ -11,14 +11,14 @@ export default ({ data }) => (
         <p>{node.excerpt}</p>
       </div>
     ))}
-    <Link to="/q">All articles</Link>
+    <Link to="/q">Tất cả bài viết</Link>
   </div>
 );
 
 export const query = graphql`
   query {
     allMarkdownRemark(
-      limit: 5,
+      limit: 3,
       sort: {
         fields: [frontmatter___datetime],
         order: DESC

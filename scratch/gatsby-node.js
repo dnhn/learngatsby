@@ -1,5 +1,6 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const BlogPost = require.resolve('./src/templates/q.tsx');
+const PostList = require.resolve('./src/templates/qs.tsx');
+const Post = require.resolve('./src/templates/q.tsx');
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   createTypes(`
@@ -44,7 +45,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const { data } = await graphql(`
     query {
-      allMarkdownRemark(sort: { fields: [frontmatter___datetime], order: DESC }) {
+      allMarkdownRemark(
+        sort: {
+          fields: [frontmatter___datetime],
+          order: DESC
+        }
+      ) {
         edges {
           node {
             fields {
@@ -54,12 +60,49 @@ exports.createPages = async ({ graphql, actions }) => {
               poster
             }
           }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
         }
       }
     }
   `);
 
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const posts = data.allMarkdownRemark.edges;
+  const postsPerPage = 2;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+
+  // Post list
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/q` : `/q/${i + 1}`,
+      component: PostList,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+      },
+    });
+  });
+
+  // Posts
+  posts.forEach(({
+    previous: previousPost,
+    node,
+    next: nextPost,
+  }) => {
     const {
       fields: { slug },
       frontmatter: { poster },
@@ -67,10 +110,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: slug,
-      component: BlogPost,
+      component: Post,
       context: {
         slug: slug,
         poster: poster,
+        previousPost,
+        nextPost,
       },
     });
   });

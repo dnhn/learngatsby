@@ -1,14 +1,24 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 export default ({
   data: {
     markdownRemark: post,
     file,
-  }
+  },
+  pageContext: { previousPost, nextPost },
 }) => (
   <div>
+    {previousPost &&
+      <Link to={previousPost.fields.slug}>
+        &lt; {previousPost.frontmatter.title}
+      </Link>}
+    <br />
+    {nextPost &&
+      <Link to={nextPost.fields.slug}>
+        {nextPost.frontmatter.title} &gt;
+      </Link>}
     {file &&
       <Img
         fluid={file.childImageSharp.fluid}
