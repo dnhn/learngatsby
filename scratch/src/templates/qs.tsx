@@ -7,8 +7,8 @@ export default ({
       edges: posts,
       pageInfo,
     },
-    sitePage: { path: pagePath },
   },
+  pageContext: { pagePath },
 }) => (
   <div>
     {pageInfo.hasPreviousPage &&
@@ -24,7 +24,7 @@ export default ({
     <div>
       {Array.from({ length: pageInfo.pageCount }, (_, i) => (
         <Link
-          key={`page${i}`}
+          key={`pagi${i}`}
           to={`${pagePath}${i === 0 ? '' : `/${i + 1}`}`}
           style={{ display: 'inline-block', padding: 20 }}
           activeStyle={{ textDecoration: 'none', color: 'black' }}
@@ -85,9 +85,6 @@ export const query = graphql`
         perPage
         totalCount
       }
-    }
-    sitePage {
-      path
     }
   }
 `;

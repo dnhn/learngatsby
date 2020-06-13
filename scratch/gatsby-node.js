@@ -1,6 +1,7 @@
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 const PostList = require.resolve('./src/templates/qs.tsx');
 const Post = require.resolve('./src/templates/q.tsx');
+const postListPath = '/q';
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   createTypes(`
@@ -21,7 +22,7 @@ exports.onCreateNode = async ({
     createNodeField({
       node,
       name: 'slug',
-      value: `/q/${node.frontmatter.slug}`,
+      value: `${postListPath}/${node.frontmatter.slug}`,
     });
 
     if (node.frontmatter.posterExt) {
@@ -88,11 +89,14 @@ exports.createPages = async ({ graphql, actions }) => {
   // Post list
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/q` : `/q/${i + 1}`,
+      path: i === 0 ?
+        `${postListPath}` :
+        `${postListPath}/${i + 1}`,
       component: PostList,
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
+        pagePath: postListPath,
       },
     });
   });
