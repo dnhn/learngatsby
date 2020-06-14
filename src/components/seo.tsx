@@ -1,36 +1,23 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { googleFonts } from '../utils/constant';
 
 export default () => {
   const {
-    site: {
-      siteMetadata: {
-        title,
-        description,
-      },
-    },
-  } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `);
+    site: { siteMetadata: { title } },
+  } = useStaticQuery(query);
 
   return (
-    <Helmet>
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href={googleFonts}
-        media="print"
-        onload="this.media='all'"
-      />
-    </Helmet>
+    <Helmet
+      titleTemplate={`%s — ${title}`}
+    />
   );
 };
+
+const query = graphql`
+query {
+  site {
+    siteMetadata { title }
+  }
+}
+`;

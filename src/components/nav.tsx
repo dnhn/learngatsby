@@ -4,18 +4,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 export default () => {
   const {
     site: { siteMetadata: { nav } },
-  } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          nav {
-            path
-            name
-          }
-        }
-      }
-    }
-  `);
+  } = useStaticQuery(query);
 
   return (
     <nav>
@@ -29,3 +18,16 @@ export default () => {
     </nav>
   )
 };
+
+const query = graphql`
+query {
+  site {
+    siteMetadata {
+      nav {
+        path
+        name
+      }
+    }
+  }
+}
+`;
