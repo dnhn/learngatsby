@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import Img from 'gatsby-image';
 
 export default ({
@@ -10,6 +11,7 @@ export default ({
   pageContext: { previousPost, nextPost },
 }) => (
   <div>
+    <Helmet title={post.frontmatter.title} />
     {previousPost &&
       <Link to={previousPost.fields.slug}>
         &lt; {previousPost.frontmatter.title}

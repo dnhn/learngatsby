@@ -5,7 +5,7 @@
   "author": "Nhan Doan <nhandev88@gmail.com>",
   "license": "Unlicense",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --log-pages",
     "start": "gatsby develop",
     "serve": "npm run build && gatsby serve",
     "clean": "gatsby clean"
