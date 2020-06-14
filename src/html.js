@@ -1,17 +1,53 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { googleFonts } from './utils/constant';
+import { siteMetadata } from '../gatsby-config';
 
 export default function HTML(props) {
   return (
-    <html {...props.htmlAttributes}>
+    <html
+      lang="vi"
+      {...props.htmlAttributes}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta name="description" content={siteMetadata.description} />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no"
         />
+        <title>{siteMetadata.title}</title>
         {props.headComponents}
+
+        {/**
+          * Google fonts loading optimisation
+          * https://csswizardry.com/2020/05/the-fastest-google-fonts
+          * */}
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          rel="preload"
+          as="style"
+          href={googleFonts}
+        />
+        <noscript>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href={googleFonts}
+          />
+        </noscript>
+        {/* End Google fonts */}
+
+        <link
+          rel="icon"
+          type="image/png"
+          href="/logo.png"
+        />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
@@ -23,8 +59,8 @@ export default function HTML(props) {
         {props.postBodyComponents}
       </body>
     </html>
-  )
-}
+  );
+};
 
 HTML.propTypes = {
   htmlAttributes: PropTypes.object,
@@ -33,4 +69,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};
