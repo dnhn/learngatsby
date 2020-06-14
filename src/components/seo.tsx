@@ -25,10 +25,13 @@ export default () => {
     '&display=swap';
 
   return (
-    <Helmet title={title}>
-      <html lang="vi" />
-      <meta name="description" content={description} />
-
+    <Helmet
+      htmlAttributes={{ lang: 'vi' }}
+      title={title}
+      meta={[
+        { name: 'description', content: description },
+      ]}
+    >
       {/**
         * Google fonts loading optimisation
         * https://csswizardry.com/2020/05/the-fastest-google-fonts
@@ -54,7 +57,7 @@ export default () => {
         {`<link
           rel="stylesheet"
           type="text/css"
-          href={googleFonts}
+          href="${googleFonts}"
         />`}
       </noscript>
       {/* End Google fonts */}
