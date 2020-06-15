@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'http://localhost',
+    siteUrl: 'https://modest-shirley-77a925.netlify.app',
     title: 'Qs',
     description: 'Build Gatsby from scratch',
     nav: [

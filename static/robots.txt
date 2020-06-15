@@ -1,0 +1,4 @@
+user-agent: *
+disallow:
+
+sitemap: https://modest-shirley-77a925.netlify.app/sitemap.xml
