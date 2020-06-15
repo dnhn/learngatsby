@@ -16,26 +16,26 @@ export default ({ data }) => (
 );
 
 export const query = graphql`
-  query {
-    allMarkdownRemark(
-      limit: 3,
-      sort: {
-        fields: [frontmatter___datetime],
-        order: DESC
-      }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 50)
+query {
+  allMarkdownRemark(
+    limit: 3,
+    sort: {
+      fields: [frontmatter___datetime],
+      order: DESC
+    }
+  ) {
+    edges {
+      node {
+        id
+        frontmatter {
+          title
         }
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 50)
       }
     }
   }
+}
 `;

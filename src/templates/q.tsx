@@ -38,27 +38,27 @@ export default ({
 );
 
 export const query = graphql`
-  query($slug: String!, $poster: String) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-      }
-      posterExt {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      timeToRead
+query($slug: String!, $poster: String) {
+  markdownRemark(fields: { slug: { eq: $slug } }) {
+    html
+    frontmatter {
+      title
     }
-    file(relativePath: { eq: $poster }) {
+    posterExt {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
         }
       }
     }
+    timeToRead
   }
+  file(relativePath: { eq: $poster }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}
 `;

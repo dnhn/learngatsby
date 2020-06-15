@@ -47,44 +47,44 @@ export default ({
 );
 
 export const query = graphql`
-  query(
-    $limit: Int!,
-    $skip: Int!
+query(
+  $limit: Int!,
+  $skip: Int!
+) {
+  allMarkdownRemark(
+    sort: {
+      fields: [frontmatter___datetime],
+      order: DESC
+    },
+    limit: $limit,
+    skip: $skip
   ) {
-    allMarkdownRemark(
-      sort: {
-        fields: [frontmatter___datetime],
-        order: DESC
-      },
-      limit: $limit,
-      skip: $skip
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            datetime(
-              formatString: "D MMMM, YYYY",
-              locale: "vi"
-            )
-          }
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 50)
+    totalCount
+    edges {
+      node {
+        id
+        frontmatter {
+          title
+          datetime(
+            formatString: "D MMMM, YYYY",
+            locale: "vi"
+          )
         }
-      }
-      pageInfo {
-        currentPage
-        hasNextPage
-        hasPreviousPage
-        itemCount
-        pageCount
-        perPage
-        totalCount
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 50)
       }
     }
+    pageInfo {
+      currentPage
+      hasNextPage
+      hasPreviousPage
+      itemCount
+      pageCount
+      perPage
+      totalCount
+    }
   }
+}
 `;
