@@ -1,4 +1,7 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const {
   ALGOLIA_APP_ID,
   ALGOLIA_API_KEY,
@@ -15,6 +18,7 @@ module.exports = {
       { path: '/', name: '[-1]' },
       { path: '/q', name: '*' },
       { path: '/me', name: 'Tôi' },
+      { path: '/tim', name: 'Tìm' },
     ],
   },
   plugins: [

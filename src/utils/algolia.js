@@ -6,25 +6,25 @@ const query = `{
       order: ASC
     }
   ) {
-    edges {
-      node {
-        objectID: id
-        frontmatter {
-          title
-          slug
-          datetime(
-            formatString: "D MMMM, YYYY",
-            locale: "vi"
-          )
-        }
-        excerpt(pruneLength: 5000)
+    nodes {
+      objectID: id
+      fields { path: slug }
+      frontmatter {
+        title
+        slug
+        datetime(
+          formatString: "D MMMM, YYYY",
+          locale: "vi"
+        )
       }
+      excerpt(pruneLength: 5000)
     }
   }
 }`;
 
 const flatten = arr =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
+  arr.map(({ fields, frontmatter, ...rest }) => ({
+    ...fields,
     ...frontmatter,
     ...rest,
   }));
@@ -34,7 +34,7 @@ const settings = { attributesToSnippet: [`excerpt:20`] };
 module.exports = indexName => [
   {
     query,
-    transformer: ({ data: { posts } }) => flatten(posts.edges),
+    transformer: ({ data: { posts } }) => flatten(posts.nodes),
     indexName,
     settings,
   },
