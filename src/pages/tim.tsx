@@ -13,8 +13,8 @@ import {
 import algoliasearch from 'algoliasearch/lite';
 
 const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_API_KEY,
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_API_KEY,
 );
 
 const Hit = ({ hit }) => (
@@ -39,7 +39,7 @@ export default () => {
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={process.env.ALGOLIA_INDEX_NAME}
+      indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
     >
       <Configure
         snippetEllipsisText="…"

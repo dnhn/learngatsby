@@ -3,9 +3,9 @@ require('dotenv').config({
 });
 
 const {
-  ALGOLIA_APP_ID,
-  ALGOLIA_API_KEY,
-  ALGOLIA_INDEX_NAME,
+  GATSBY_ALGOLIA_APP_ID,
+  GATSBY_ALGOLIA_API_KEY,
+  GATSBY_ALGOLIA_INDEX_NAME,
 } = process.env;
 const algoliaQueries = require('./src/utils/algolia');
 
@@ -79,10 +79,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
-        appId: ALGOLIA_APP_ID,
-        apiKey: ALGOLIA_API_KEY,
-        indexName: ALGOLIA_INDEX_NAME,
-        queries: algoliaQueries(ALGOLIA_INDEX_NAME),
+        appId: GATSBY_ALGOLIA_APP_ID,
+        apiKey: GATSBY_ALGOLIA_API_KEY,
+        indexName: GATSBY_ALGOLIA_INDEX_NAME,
+        queries: algoliaQueries(GATSBY_ALGOLIA_INDEX_NAME),
         chunkSize: 5000,
         enablePartialUpdates: true,
         matchFields: ['slug', 'modified'],
