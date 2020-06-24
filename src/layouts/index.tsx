@@ -1,13 +1,19 @@
-import React from 'react';
-import SEO from '../components/seo';
-import Nav from '../components/nav';
-import Autocomplete from '../components/autocomplete';
+import React, { Suspense, lazy } from 'react';
+import { isSSR } from '../utils/constant';
+
+const SEO = lazy(() => import('../components/seo'));
+const Nav = lazy(() => import('../components/nav'));
+const Autocomplete = lazy(() => import('../components/autocomplete'));
 
 export default ({ children, location }) => (
   <main>
-    <SEO />
-    <Nav />
-    <Autocomplete location={location} />
-    {children}
+    {!isSSR && (
+      <Suspense fallback={`Loading…`}>
+        <SEO />
+        <Nav />
+        <Autocomplete location={location} />
+        {children}
+      </Suspense>
+    )}
   </main>
 );
