@@ -44,15 +44,19 @@ const Autocomplete = connectAutoComplete(({
   refine: any,
 }) => (
   <div>
-    <label htmlFor="alg-autocomplete">
-      <input
-        id="alg-autocomplete"
-        type="search"
-        placeholder="tìm kiếm nhanh"
-        value={currentRefinement}
-        onChange={event => refine(event.currentTarget.value)}
-      />
+    <label
+      htmlFor="alg-autocomplete"
+      className="visually-hidden"
+    >
+      Tìm kiếm nhanh
     </label>
+    <input
+      id="alg-autocomplete"
+      type="search"
+      placeholder="tìm kiếm nhanh"
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+    />
     {currentRefinement && <Hits hitComponent={Hit} hits={hits} />}
   </div>
 ));
