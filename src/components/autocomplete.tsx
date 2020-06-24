@@ -9,6 +9,7 @@ import {
   connectAutoComplete,
 } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
+import { processSearchQuery } from '../utils/helper.js';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -52,13 +53,19 @@ const Autocomplete = connectAutoComplete(({
   </div>
 ));
 
-export default () => {
+export default ({
+  location: { search },
+}: {
+  location: { search: string },
+}) => {
+  const { alg = '' } = processSearchQuery(search);
+
   return (
     <InstantSearch
       searchClient={searchClient}
       indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
     >
-      <Autocomplete />
+      <Autocomplete defaultRefinement={alg} />
       <PoweredBy
         translations={{ searchBy: 'tìm kiếm bằng' }}
       />

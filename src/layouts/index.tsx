@@ -3,11 +3,11 @@ import SEO from '../components/seo';
 import Nav from '../components/nav';
 import Autocomplete from '../components/autocomplete';
 
-export default ({ children }) => (
+export default ({ children, location }) => (
   <main>
     <SEO />
     <Nav />
-    <Autocomplete />
+    <Autocomplete location={location} />
     {children}
   </main>
 );

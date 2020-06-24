@@ -35,31 +35,26 @@ const Hit = ({ hit }) => (
   </Panel>
 );
 
-export default () => {
-  return (
-    <InstantSearch
-      searchClient={searchClient}
-      indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
-    >
-      <Configure
-        snippetEllipsisText="…"
-      />
-      <SearchBox
-        translations={{
-          placeholder: 'nhấn ‘s’ để bắt đầu tìm kiếm',
-        }}
-      />
-      <Stats
-        translations={{
-          stats: (nbHits, timeSpentMS) =>
-            `${nbHits} kết quả trong ${timeSpentMS} mili giây`
-        }}
-      />
-      <Hits hitComponent={Hit} />
-      <PoweredBy
-        translations={{ searchBy: 'tìm kiếm bằng' }}
-      />
-    </InstantSearch>
-  );
-};
-
+export default () => (
+  <InstantSearch
+    searchClient={searchClient}
+    indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
+  >
+    <Configure snippetEllipsisText="…" />
+    <SearchBox
+      translations={{
+        placeholder: 'nhấn ‘s’ để bắt đầu tìm kiếm',
+      }}
+    />
+    <Stats
+      translations={{
+        stats: (nbHits, timeSpentMS) =>
+          `${nbHits} kết quả trong ${timeSpentMS} mili giây`
+      }}
+    />
+    <Hits hitComponent={Hit} />
+    <PoweredBy
+      translations={{ searchBy: 'tìm kiếm bằng' }}
+    />
+  </InstantSearch>
+);
