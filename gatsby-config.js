@@ -23,12 +23,10 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sass',
-    'gatsby-plugin-layout',
     'gatsby-plugin-postcss',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-transition-link',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,6 +37,12 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/assets`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        layout: require.resolve('./src/layouts/index.tsx'),
       },
     },
     {
