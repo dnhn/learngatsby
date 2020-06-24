@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 export default () => {
   const {
@@ -11,7 +12,13 @@ export default () => {
       <ul>
         {nav.map(n => (
           <li key={n.path}>
-            <Link to={n.path}>{n.name}</Link>
+            <AniLink
+              paintDrip
+              color="lightskyblue"
+              to={n.path}
+            >
+              {n.name}
+            </AniLink>
           </li>
         ))}
       </ul>

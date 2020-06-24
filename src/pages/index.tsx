@@ -1,17 +1,26 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 export default ({ data }) => (
   <div>
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <div key={node.id}>
-        <Link to={node.fields.slug}>
+        <AniLink
+          paintDrip
+          color="lightskyblue"
+          to={node.fields.slug}
+        >
           <h3>{node.frontmatter.title}</h3>
-        </Link>
+        </AniLink>
         <p>{node.excerpt}</p>
       </div>
     ))}
-    <Link to="/q">Tất cả bài viết</Link>
+    <AniLink
+      paintDrip
+      color="lightskyblue"
+      to="/q"
+    >Tất cả bài viết</AniLink>
   </div>
 );
 

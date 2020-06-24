@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Helmet } from 'react-helmet';
 import Img from 'gatsby-image';
 
@@ -13,14 +14,22 @@ export default ({
   <div>
     <Helmet title={post.frontmatter.title} />
     {previousPost &&
-      <Link to={previousPost.fields.slug}>
+      <AniLink
+        paintDrip
+        color="lightskyblue"
+        to={previousPost.fields.slug}
+      >
         &lt; {previousPost.frontmatter.title}
-      </Link>}
+      </AniLink>}
     <br />
     {nextPost &&
-      <Link to={nextPost.fields.slug}>
+      <AniLink
+        paintDrip
+        color="lightskyblue"
+        to={nextPost.fields.slug}
+      >
         {nextPost.frontmatter.title} &gt;
-      </Link>}
+      </AniLink>}
     {file &&
       <Img
         fluid={file.childImageSharp.fluid}
