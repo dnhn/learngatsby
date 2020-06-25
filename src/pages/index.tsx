@@ -20,7 +20,9 @@ export default ({ data }) => (
       paintDrip
       color="lightskyblue"
       to="/q"
-    >Tất cả bài viết</AniLink>
+    >
+      Tất cả bài viết
+    </AniLink>
   </div>
 );
 

@@ -14,6 +14,7 @@ module.exports = {
     siteUrl: 'https://modest-shirley-77a925.netlify.app',
     title: 'Qs',
     description: 'Build Gatsby from scratch',
+    author: 'N',
     nav: [
       { path: '/', name: '[-1]' },
       { path: '/q', name: '*' },
@@ -25,7 +26,6 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-source-filesystem`,
