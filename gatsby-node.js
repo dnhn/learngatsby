@@ -1,6 +1,6 @@
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-const PostList = require.resolve('./src/templates/qs.tsx');
-const Post = require.resolve('./src/templates/q.tsx');
+const PostList = require.resolve('./src/templates/qs.jsx');
+const Post = require.resolve('./src/templates/q.jsx');
 const postListPath = '/q';
 
 exports.onCreateNode = ({

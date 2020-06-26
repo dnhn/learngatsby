@@ -38,10 +38,6 @@ const Autocomplete = connectAutoComplete(({
   hits,
   currentRefinement,
   refine,
-}: {
-  hits: object[],
-  currentRefinement?: string,
-  refine: any,
 }) => (
   <div>
     <label
@@ -63,8 +59,6 @@ const Autocomplete = connectAutoComplete(({
 
 export default ({
   location: { search },
-}: {
-  location: { search: string },
 }) => {
   const { alg = '' } = processSearchQuery(search);
 
