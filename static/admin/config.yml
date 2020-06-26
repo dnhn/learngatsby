@@ -5,15 +5,17 @@ backend:
 media_folder: static/images/uploads
 public_folder: /images/uploads
 
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+
 collections:
   - name: 'post'
-    label: 'Q'
+    label: 'Post'
     folder: 'posts'
     create: true
-    slug: 'index'
-    media_folder: ''
-    public_folder: ''
-    path: '{{title}}/index'
+    slug: '{{fields.slug}}'
+    path: '{{slug}}/index'
     editor:
       preview: false
     fields:
