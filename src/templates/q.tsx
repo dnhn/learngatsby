@@ -28,6 +28,7 @@ export default ({
         {nextPost.frontmatter.title} &gt;
       </AniLink>}
     <h2>{post.frontmatter.title}</h2>
+    {JSON.stringify(post.frontmatter.poster)}
     <h4>{post.timeToRead} phút</h4>
     <div dangerouslySetInnerHTML={{ __html: post.html }} />
   </div>
@@ -39,6 +40,11 @@ query($slug: String!) {
     html
     frontmatter {
       title
+      poster {
+        src
+        alt
+        title
+      }
     }
     timeToRead
   }
