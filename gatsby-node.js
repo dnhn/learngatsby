@@ -1,11 +1,14 @@
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const PostList = require.resolve('./src/templates/qs.tsx');
 const Post = require.resolve('./src/templates/q.tsx');
 const postListPath = '/q';
 
-exports.onCreateNode = async ({
+exports.onCreateNode = ({
   actions: { createNodeField },
   node,
 }) => {
+  fmImagesToRelative(node);
+
   if (node.internal.type === 'MarkdownRemark') {
     createNodeField({
       node,
@@ -83,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: slug,
       component: Post,
       context: {
-        slug: slug,
+        slug,
         previousPost,
         nextPost,
       },

@@ -35,15 +35,22 @@ collections:
         label: 'Poster'
         widget: 'object'
         fields:
-          - name: 'src'
-            label: 'Image'
+          - name: 'local'
+            label: 'Upload'
             widget: 'image'
+            required: false
+          - name: 'external'
+            label: 'URL'
+            widget: 'string'
+            required: false
           - name: 'alt'
             label: 'Alt'
             widget: 'string'
+            required: false
           - name: 'title'
             label: 'Title'
             widget: 'string'
+            required: false
       - name: 'body'
         label: 'Body'
         widget: 'markdown'

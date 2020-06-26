@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Helmet } from 'react-helmet';
-import Img from 'gatsby-image';
 
 export default ({
   data: { markdownRemark: post },
@@ -28,8 +27,15 @@ export default ({
         {nextPost.frontmatter.title} &gt;
       </AniLink>}
     <h2>{post.frontmatter.title}</h2>
-    {JSON.stringify(post.frontmatter.poster)}
     <h4>{post.timeToRead} phút</h4>
+    {post.frontmatter.poster && (
+      <>
+        {post.frontmatter.poster.local &&
+          <img src={post.frontmatter.poster.local.publicURL} alt="" />}
+        {post.frontmatter.poster.external &&
+          <img src={post.frontmatter.poster.external} alt="" />}
+      </>
+    )}
     <div dangerouslySetInnerHTML={{ __html: post.html }} />
   </div>
 );
@@ -41,7 +47,10 @@ query($slug: String!) {
     frontmatter {
       title
       poster {
-        src
+        local {
+          publicURL
+        }
+        external
         alt
         title
       }

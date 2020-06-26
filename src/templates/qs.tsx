@@ -35,17 +35,32 @@ export default ({
       ))}
     </div>
 
-    {posts.map(({ node }) => (
-      <div key={node.id}>
+    {posts.map(({
+      node: {
+        id,
+        fields: { slug },
+        frontmatter,
+        excerpt,
+      },
+    }) => (
+      <div key={id}>
         <AniLink
           paintDrip
           color="lightskyblue"
-          to={node.fields.slug}
+          to={slug}
         >
-          <h3>{node.frontmatter.title}</h3>
+          <h3>{frontmatter.title}</h3>
         </AniLink>
-        <span>{node.frontmatter.datetime}</span>
-        <p>{node.excerpt}</p>
+        <p>{frontmatter.datetime}</p>
+        {frontmatter.poster && (
+          <>
+            {frontmatter.poster.local &&
+              <img src={frontmatter.poster.local.publicURL} alt="" />}
+            {frontmatter.poster.external &&
+              <img src={frontmatter.poster.external} alt="" />}
+          </>
+        )}
+        <p>{excerpt}</p>
       </div>
     ))}
   </div>
@@ -74,6 +89,14 @@ query(
             formatString: "D MMMM, YYYY",
             locale: "vi"
           )
+          poster {
+            local {
+              publicURL
+            }
+            external
+            alt
+            title
+          }
         }
         fields {
           slug

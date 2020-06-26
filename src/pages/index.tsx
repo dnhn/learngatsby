@@ -4,16 +4,31 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 export default ({ data }) => (
   <div>
-    {data.allMarkdownRemark.edges.map(({ node }) => (
-      <div key={node.id}>
+    {data.allMarkdownRemark.edges.map(({
+      node: {
+        id,
+        fields: { slug },
+        frontmatter,
+        excerpt,
+      },
+    }) => (
+      <div key={id}>
         <AniLink
           paintDrip
           color="lightskyblue"
-          to={node.fields.slug}
+          to={slug}
         >
-          <h3>{node.frontmatter.title}</h3>
+          <h3>{frontmatter.title}</h3>
         </AniLink>
-        <p>{node.excerpt}</p>
+        {frontmatter.poster && (
+          <>
+            {frontmatter.poster.local &&
+              <img src={frontmatter.poster.local.publicURL} alt="" />}
+            {frontmatter.poster.external &&
+              <img src={frontmatter.poster.external} alt="" />}
+          </>
+        )}
+        <p>{excerpt}</p>
       </div>
     ))}
     <AniLink
@@ -40,6 +55,14 @@ query {
         id
         frontmatter {
           title
+          poster {
+            local {
+              publicURL
+            }
+            external
+            alt
+            title
+          }
         }
         fields {
           slug

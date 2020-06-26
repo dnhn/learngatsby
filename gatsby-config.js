@@ -23,9 +23,9 @@ module.exports = {
     ],
   },
   plugins: [
+    'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify-cms',
     {
@@ -58,6 +58,7 @@ module.exports = {
               removeAccents: true,
             },
           },
+          'gatsby-remark-relative-images',
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -70,7 +71,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
-              destinationDir: f => `static/${f.hash}/${f.name}`,
+              destinationDir: f => `static/${f.name}`,
             },
           },
         ],
@@ -149,6 +150,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-netlify',
+    'gatsby-plugin-netlify', // keep at the end of array
   ],
 };
