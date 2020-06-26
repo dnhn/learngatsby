@@ -1,6 +1,6 @@
 ---
 title: Bài viết bằng Markdown
-datetime: 2020-06-07
+datetime: 2020-06-07T06:16:49.251Z
 slug: markdown
 poster:
   external: 'https://unsplash.it/500/300'
