@@ -11,3 +11,5 @@ export const processSearchQuery = search => {
 
   return params;
 };
+
+export const isSSR = typeof window === 'undefined';
