@@ -20,7 +20,9 @@ exports.onCreateNode = ({
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const { data } = await graphql(`
+  const {
+    data: { allMarkdownRemark: { edges: posts } }
+  } = await graphql(`
     query {
       allMarkdownRemark(
         sort: {
@@ -30,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
       ) {
         edges {
           node {
+            id
             fields {
               slug
             }
@@ -55,7 +58,6 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const posts = data.allMarkdownRemark.edges;
   const postsPerPage = 2;
   const numPages = Math.ceil(posts.length / postsPerPage);
 
@@ -77,16 +79,17 @@ exports.createPages = async ({ graphql, actions }) => {
   // Posts
   posts.forEach(({
     previous: previousPost,
-    node,
+    node: {
+      id,
+      fields: { slug },
+    },
     next: nextPost,
   }) => {
-    const { fields: { slug } } = node;
-
     createPage({
       path: slug,
       component: Post,
       context: {
-        slug,
+        id,
         previousPost,
         nextPost,
       },
