@@ -1,7 +1,7 @@
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const PostList = require.resolve('./src/templates/qs.jsx');
 const Post = require.resolve('./src/templates/q.jsx');
-const postListPath = '/q';
+const postPath = '/q';
 
 exports.onCreateNode = ({
   actions: { createNodeField },
@@ -13,7 +13,7 @@ exports.onCreateNode = ({
     createNodeField({
       node,
       name: 'slug',
-      value: `${postListPath}/${node.frontmatter.slug}`,
+      value: `${postPath}/${node.frontmatter.slug}`,
     });
   }
 };
@@ -63,13 +63,13 @@ exports.createPages = async ({ graphql, actions }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ?
-        `${postListPath}` :
-        `${postListPath}/${i + 1}`,
+        `${postPath}` :
+        `${postPath}/${i + 1}`,
       component: PostList,
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
-        pagePath: postListPath,
+        pagePath: postPath,
       },
     });
   });
