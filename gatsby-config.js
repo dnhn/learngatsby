@@ -25,7 +25,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
-    'gatsby-plugin-postcss',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify-cms',
     {
