@@ -26,7 +26,12 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-netlify-cms',
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        htmlTitle: 'CMS',
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

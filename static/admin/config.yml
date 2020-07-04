@@ -1,3 +1,6 @@
+site_url: /
+logo_url: /logo.svg
+
 backend:
   name: git-gateway
   branch: master
@@ -11,7 +14,7 @@ slug:
 
 collections:
   - name: 'post'
-    label: 'Post'
+    label: 'Bài viết'
     folder: 'posts'
     create: true
     slug: '{{fields.slug}}'
@@ -20,38 +23,38 @@ collections:
       preview: false
     fields:
       - name: 'title'
-        label: 'Title'
+        label: 'Tựa đề'
         widget: 'string'
         required: true
       - name: 'datetime'
-        label: 'Publish Date'
+        label: 'Thời gian'
         widget: 'datetime'
         required: true
       - name: 'slug'
-        label: 'Path'
+        label: 'Đường dẫn'
         widget: 'string'
         required: true
       - name: 'poster'
-        label: 'Poster'
+        label: 'Hình đại diện'
         widget: 'object'
         fields:
           - name: 'local'
-            label: 'Upload'
+            label: 'Tải lên'
             widget: 'image'
             required: false
           - name: 'external'
-            label: 'URL'
+            label: 'Liên kết ngoài'
             widget: 'string'
             required: false
           - name: 'alt'
-            label: 'Alt'
+            label: 'Nội dung thay thế'
             widget: 'string'
             required: false
           - name: 'title'
-            label: 'Title'
+            label: 'Tựa đề'
             widget: 'string'
             required: false
       - name: 'body'
-        label: 'Body'
+        label: 'Nội dung bài viết'
         widget: 'markdown'
         required: true
