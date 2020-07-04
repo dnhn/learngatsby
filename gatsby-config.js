@@ -31,6 +31,7 @@ module.exports = {
       options: {
         htmlTitle: 'CMS',
         modulePath: `${__dirname}/src/cms/cms.js`,
+        publicPath: 'cms',
       },
     },
     {
