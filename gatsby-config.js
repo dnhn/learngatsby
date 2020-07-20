@@ -26,6 +26,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-head',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

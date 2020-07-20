@@ -8,7 +8,9 @@
     "build": "gatsby build --verbose",
     "start": "gatsby develop --verbose",
     "serve": "npm run build && gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "preview": "npm run build && netlify deploy",
+    "deploy": "npm run build && netlify deploy --prod"
   },
   "dependencies": {
     "algoliasearch": "^4.3.0",
@@ -19,6 +21,7 @@
     "gatsby-plugin-feed": "^2.5.5",
     "gatsby-plugin-netlify": "^2.3.6",
     "gatsby-plugin-netlify-cms": "^4.3.7",
+    "gatsby-plugin-react-head": "^1.1.0",
     "gatsby-plugin-sass": "^2.3.3",
     "gatsby-plugin-sharp": "^2.6.11",
     "gatsby-plugin-sitemap": "^2.4.5",
@@ -37,6 +40,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-head": "^3.3.0",
     "react-helmet": "^6.1.0",
     "react-instantsearch-dom": "^6.5.0",
     "react-typography": "^0.16.19",
