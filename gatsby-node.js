@@ -13,7 +13,7 @@ exports.onCreateNode = ({
     createNodeField({
       node,
       name: 'slug',
-      value: `${postPath}/${node.frontmatter.slug}`,
+      value: `${postPath}/${node.frontmatter.slug}/`,
     });
   }
 };

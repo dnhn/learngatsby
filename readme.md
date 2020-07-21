@@ -11,3 +11,4 @@ Features:
 - RSS feed
 - Sitemap
 - Page transition effects
+- social meta tags

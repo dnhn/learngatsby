@@ -2,13 +2,34 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Helmet } from 'react-helmet';
+import { Link, Meta } from 'react-head';
 
 export default ({
-  data: { markdownRemark: post },
+  data: {
+    site: { siteMetadata },
+    markdownRemark: post,
+  },
   pageContext: { previousPost, nextPost },
 }) => (
   <div>
     <Helmet title={post.frontmatter.title} />
+    <Meta
+      property="og:url"
+      content={`${siteMetadata.siteUrl}${post.fields.slug}`}
+    />
+    <Meta property="og:type" content="article" />
+    <Meta property="og:title" content={post.frontmatter.title} />
+    <Meta property="og:description" content={post.excerpt} />
+    <Meta property="og:image" content="https://unsplash.it/640/320" />
+    <Meta name="twitter:card" content="summary_large_image" />
+    <Meta name="twitter:title" content={post.frontmatter.title} />
+    <Meta name="twitter:descrition" content={post.excerpt} />
+    <Meta name="twitter:image" content="https://unsplash.it/640/320" />
+    <Link
+      rel="canonical"
+      href={`${siteMetadata.siteUrl}${post.fields.slug}`}
+    />
+
     {previousPost &&
       <AniLink
         paintDrip
@@ -42,8 +63,19 @@ export default ({
 
 export const query = graphql`
 query($id: String!) {
+  site {
+    siteMetadata {
+      title
+      siteUrl
+    }
+  }
   markdownRemark(id: { eq: $id }) {
+    excerpt(pruneLength: 150)
+    fields {
+      slug
+    }
     html
+    timeToRead
     frontmatter {
       title
       poster {
@@ -55,7 +87,6 @@ query($id: String!) {
         title
       }
     }
-    timeToRead
   }
 }
 `;

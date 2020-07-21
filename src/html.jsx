@@ -18,6 +18,11 @@ const HTML = props => (
       />
       <title>{siteMetadata.title}</title>
 
+      <meta property="og:site_name" content={siteMetadata.title} />
+      <meta property="og:locale" content="vi_VN" />
+      <meta name="twitter:site" content="@twitter" />
+      <meta name="twitter:creator" content="@twitter" />
+
       {/**
         * Google fonts loading optimisation
         * https://csswizardry.com/2020/05/the-fastest-google-fonts
