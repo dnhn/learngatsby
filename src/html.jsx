@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { googleFonts } from './utils/constant';
+import { CDN, googleFonts } from './utils/constant';
 import { siteMetadata } from '../gatsby-config';
 
 const HTML = props => (
@@ -22,6 +22,10 @@ const HTML = props => (
       <meta property="og:locale" content="vi_VN" />
       <meta name="twitter:site" content="@twitter" />
       <meta name="twitter:creator" content="@twitter" />
+
+      <link rel="dns-prefetch" href={CDN} />
+      <link rel="preconnect" href={CDN} />
+      <link rel="preconnect" href={CDN} crossOrigin="true" />
 
       {/**
         * Google fonts loading optimisation

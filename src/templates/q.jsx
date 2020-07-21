@@ -31,22 +31,44 @@ export default ({
     />
 
     {previousPost &&
-      <AniLink
-        paintDrip
-        color="lightskyblue"
-        to={previousPost.fields.slug}
-      >
-        &lt; {previousPost.frontmatter.title}
-      </AniLink>}
+      <>
+        <Link
+          rel="prefetch"
+          href={`${siteMetadata.siteUrl}${previousPost.fields.slug}`}
+          as="document"
+        />
+        <Link
+          rel="prerender"
+          href={`${siteMetadata.siteUrl}${previousPost.fields.slug}`}
+        />
+        <AniLink
+          paintDrip
+          color="lightskyblue"
+          to={previousPost.fields.slug}
+        >
+          &lt; {previousPost.frontmatter.title}
+        </AniLink>
+      </>}
     <br />
     {nextPost &&
-      <AniLink
-        paintDrip
-        color="lightskyblue"
-        to={nextPost.fields.slug}
-      >
-        {nextPost.frontmatter.title} &gt;
-      </AniLink>}
+      <>
+        <Link
+          rel="prefetch"
+          href={`${siteMetadata.siteUrl}${nextPost.fields.slug}`}
+          as="document"
+        />
+        <Link
+          rel="prerender"
+          href={`${siteMetadata.siteUrl}${nextPost.fields.slug}`}
+        />
+        <AniLink
+          paintDrip
+          color="lightskyblue"
+          to={nextPost.fields.slug}
+        >
+          {nextPost.frontmatter.title} &gt;
+        </AniLink>
+      </>}
     <h2>{post.frontmatter.title}</h2>
     <h4>{post.timeToRead} phút</h4>
     {post.frontmatter.poster && (
