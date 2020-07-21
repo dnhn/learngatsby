@@ -13,25 +13,36 @@ export default ({
 }) => (
   <div>
     {pageInfo.hasPreviousPage &&
-      <Link to={`${pagePath}${pageInfo.currentPage <= 2 ? '' : `/${pageInfo.currentPage - 1}`}`}>
+      <AniLink
+        fade
+        duration={.5}
+        to={`${pagePath}${pageInfo.currentPage <= 2 ? '' :
+          `/${pageInfo.currentPage - 1}`}`}
+      >
         Prev
-      </Link>}
+      </AniLink>}
     page {pageInfo.currentPage} / {pageInfo.pageCount}
     {pageInfo.hasNextPage &&
-      <Link to={`${pagePath}/${pageInfo.currentPage + 1}`}>
+      <AniLink
+        fade
+        duration={.5}
+        to={`${pagePath}/${pageInfo.currentPage + 1}`}
+      >
         Next
-      </Link>}
+      </AniLink>}
 
     <div>
       {Array.from({ length: pageInfo.pageCount }, (_, i) => (
-        <Link
+        <AniLink
+          fade
+          duration={.5}
           key={`pagi${i}`}
           to={`${pagePath}${i === 0 ? '' : `/${i + 1}`}`}
           style={{ display: 'inline-block', padding: 20 }}
           activeStyle={{ textDecoration: 'none', color: 'black' }}
         >
           {i + 1}
-        </Link>
+        </AniLink>
       ))}
     </div>
 
@@ -44,13 +55,9 @@ export default ({
       },
     }) => (
       <div key={id}>
-        <AniLink
-          paintDrip
-          color="lightskyblue"
-          to={slug}
-        >
+        <Link to={slug}>
           <h3>{frontmatter.title}</h3>
-        </AniLink>
+        </Link>
         <p>{frontmatter.datetime}</p>
         {frontmatter.poster && (
           <>

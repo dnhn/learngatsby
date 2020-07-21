@@ -1,7 +1,6 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { Link, Meta } from 'react-head';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link, graphql } from 'gatsby';
+import { Link as HeadLink, Meta } from 'react-head';
 
 export default ({
   data: {
@@ -19,7 +18,7 @@ export default ({
     <Meta name="twitter:title" content={siteMetadata.title} />
     <Meta name="twitter:descrition" content={siteMetadata.description} />
     <Meta name="twitter:image" content="https://unsplash.it/640/320" />
-    <Link rel="canonical" href={siteMetadata.siteUrl} />
+    <HeadLink rel="canonical" href={siteMetadata.siteUrl} />
 
     {posts.edges.map(({
       node: {
@@ -30,13 +29,9 @@ export default ({
       },
     }) => (
       <div key={id}>
-        <AniLink
-          paintDrip
-          color="lightskyblue"
-          to={slug}
-        >
+        <Link to={slug}>
           <h3>{frontmatter.title}</h3>
-        </AniLink>
+        </Link>
         {frontmatter.poster && (
           <>
             {frontmatter.poster.local &&
@@ -48,13 +43,9 @@ export default ({
         <p>{excerpt}</p>
       </div>
     ))}
-    <AniLink
-      paintDrip
-      color="lightskyblue"
-      to="/q"
-    >
+    <Link to="/q">
       Tất cả bài viết
-    </AniLink>
+    </Link>
   </div>
 );
 

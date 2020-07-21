@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Helmet } from 'react-helmet';
-import { Link, Meta } from 'react-head';
+import { Link as HeadLink, Meta } from 'react-head';
 
 export default ({
   data: {
@@ -25,25 +25,27 @@ export default ({
     <Meta name="twitter:title" content={post.frontmatter.title} />
     <Meta name="twitter:descrition" content={post.excerpt} />
     <Meta name="twitter:image" content="https://unsplash.it/640/320" />
-    <Link
+    <HeadLink
       rel="canonical"
       href={`${siteMetadata.siteUrl}${post.fields.slug}`}
     />
 
     {previousPost &&
       <>
-        <Link
+        <HeadLink
           rel="prefetch"
           href={`${siteMetadata.siteUrl}${previousPost.fields.slug}`}
           as="document"
         />
-        <Link
+        <HeadLink
           rel="prerender"
           href={`${siteMetadata.siteUrl}${previousPost.fields.slug}`}
         />
         <AniLink
-          paintDrip
-          color="lightskyblue"
+          swipe
+          direction="right"
+          entryOffset={100}
+          duration={.5}
           to={previousPost.fields.slug}
         >
           &lt; {previousPost.frontmatter.title}
@@ -52,18 +54,20 @@ export default ({
     <br />
     {nextPost &&
       <>
-        <Link
+        <HeadLink
           rel="prefetch"
           href={`${siteMetadata.siteUrl}${nextPost.fields.slug}`}
           as="document"
         />
-        <Link
+        <HeadLink
           rel="prerender"
           href={`${siteMetadata.siteUrl}${nextPost.fields.slug}`}
         />
         <AniLink
-          paintDrip
-          color="lightskyblue"
+          swipe
+          direction="left"
+          entryOffset={100}
+          duration={.5}
           to={nextPost.fields.slug}
         >
           {nextPost.frontmatter.title} &gt;
