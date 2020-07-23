@@ -23,9 +23,13 @@ const HTML = props => (
       <meta name="twitter:site" content="@twitter" />
       <meta name="twitter:creator" content="@twitter" />
 
-      <link rel="dns-prefetch" href={CDN} />
-      <link rel="preconnect" href={CDN} />
-      <link rel="preconnect" href={CDN} crossOrigin="true" />
+      {CDN.map(cdn => (
+        <>
+          <link rel="dns-prefetch" href={cdn} />
+          <link rel="preconnect" href={cdn} />
+          <link rel="preconnect" href={cdn} crossOrigin="true" />
+        </>
+      ))}
 
       {/**
         * Google fonts loading optimisation
