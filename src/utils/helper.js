@@ -13,3 +13,6 @@ export const processSearchQuery = search => {
 };
 
 export const isSSR = typeof window === 'undefined';
+
+export const randomRange = (min, max) =>
+  Math.round(Math.random() * (max - min) + min);

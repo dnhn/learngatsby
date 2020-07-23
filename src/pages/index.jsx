@@ -13,11 +13,11 @@ export default ({
     <Meta property="og:type" content="website" />
     <Meta property="og:title" content={siteMetadata.title} />
     <Meta property="og:description" content={siteMetadata.description} />
-    <Meta property="og:image" content="https://unsplash.it/640/320" />
+    <Meta property="og:image" content={`${siteMetadata.siteUrl}/logo.png`} />
     <Meta name="twitter:card" content="summary_large_image" />
     <Meta name="twitter:title" content={siteMetadata.title} />
     <Meta name="twitter:descrition" content={siteMetadata.description} />
-    <Meta name="twitter:image" content="https://unsplash.it/640/320" />
+    <Meta name="twitter:image" content={`${siteMetadata.siteUrl}/logo.png`} />
     <HeadLink rel="canonical" href={siteMetadata.siteUrl} />
 
     {posts.edges.map(({

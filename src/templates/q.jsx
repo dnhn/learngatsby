@@ -3,6 +3,10 @@ import { graphql } from 'gatsby';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { Helmet } from 'react-helmet';
 import { Link as HeadLink, Meta } from 'react-head';
+import { randomRange } from '../utils/helper';
+
+const unsplashRandom =
+  `https://unsplash.it/${randomRange(200, 400)}/${randomRange(200, 400)}`;
 
 export default ({
   data: {
@@ -20,13 +24,11 @@ export default ({
     <Meta property="og:type" content="article" />
     <Meta property="og:title" content={post.frontmatter.title} />
     <Meta property="og:description" content={post.excerpt} />
-    <Meta property="og:image" content="https://unsplash.it/480/240" />
     <Meta name="twitter:card" content="summary_large_image" />
     <Meta name="twitter:title" content={post.frontmatter.title} />
     <Meta name="twitter:descrition" content={post.excerpt} />
-    <Meta name="twitter:image" content="https://unsplash.it/480/240" />
 
-    {post.frontmatter.poster && (
+    {post.frontmatter.poster ? (
       <>
         {post.frontmatter.poster.external &&
           <>
@@ -44,6 +46,11 @@ export default ({
               content={`${siteMetadata.siteUrl}${post.frontmatter.poster.local.publicURL}`}
             />
           </>}
+      </>
+    ) : (
+      <>
+        <Meta property="og:image" content={unsplashRandom} />
+        <Meta name="twitter:image" content={unsplashRandom} />
       </>
     )}
 
