@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { CDN, googleFonts } from './utils/constant';
 import { siteMetadata } from '../gatsby-config';
@@ -24,11 +24,11 @@ const HTML = props => (
       <meta name="twitter:creator" content="@twitter" />
 
       {CDN.map(cdn => (
-        <>
+        <Fragment key={cdn}>
           <link rel="dns-prefetch" href={cdn} />
           <link rel="preconnect" href={cdn} />
           <link rel="preconnect" href={cdn} crossOrigin="true" />
-        </>
+        </Fragment>
       ))}
 
       {/**
