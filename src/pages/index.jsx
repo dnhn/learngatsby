@@ -1,14 +1,40 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import { Link as HeadLink, Meta } from 'react-head';
 
 export default ({
   data: {
     allMarkdownRemark: posts,
-    site: { siteMetadata },
+    site: {
+      buildTime,
+      siteMetadata,
+    },
   },
 }) => (
   <div>
+    <Helmet>
+      <script type="application/ld+json">
+        {`{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "${siteMetadata.siteUrl}",
+          "name": "${siteMetadata.title}",
+          "description": "${siteMetadata.description}",
+          "creator": {
+            "@type": "Person",
+            "name": "${siteMetadata.author}"
+          },
+          "dateModified": "${buildTime}",
+          "image": "${siteMetadata.siteUrl}/logo.png",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "${siteMetadata.siteUrl}/tim?alg={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }`}
+      </script>
+    </Helmet>
     <Meta property="og:url" content={siteMetadata.siteUrl} />
     <Meta property="og:type" content="website" />
     <Meta property="og:title" content={siteMetadata.title} />
@@ -52,10 +78,12 @@ export default ({
 export const query = graphql`
 query {
   site {
+    buildTime
     siteMetadata {
+      author
+      description
       siteUrl
       title
-      description
     }
   }
   allMarkdownRemark(

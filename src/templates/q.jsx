@@ -16,7 +16,62 @@ export default ({
   pageContext: { previousPost, nextPost },
 }) => (
   <div>
-    <Helmet title={post.frontmatter.title} />
+    <Helmet title={post.frontmatter.title}>
+      <script type="application/ld+json">
+        {`{
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "${siteMetadata.siteUrl}${post.fields.slug}"
+          },
+          "headline": "${post.frontmatter.title}",
+          "description": "${post.excerpt}",
+          "dateCreated": "${post.frontmatter.ldDatetime}",
+          "datePublished": "${post.frontmatter.ldDatetime}",
+          "dateModified": "${post.frontmatter.ldDatetime}",
+          "author": {
+            "@type": "Person",
+            "name": "${siteMetadata.author}"
+          },
+          "image": "${post.frontmatter.poster && (
+            post.frontmatter.poster.external ?
+              post.frontmatter.poster.external :
+              post.frontmatter.poster.local ?
+                `${siteMetadata.siteUrl}${post.frontmatter.poster.local.publicURL}` : ''
+          )}"
+        }`}
+      </script>
+      <script type="application/ld+json">
+        {`{
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "${siteMetadata.siteUrl}",
+                "name": "${siteMetadata.title}"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "${siteMetadata.siteUrl}/q",
+                "name": "Qs"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "${post.frontmatter.title}"
+            }
+          ]
+        }`}
+      </script>
+    </Helmet>
     <Meta
       property="og:url"
       content={`${siteMetadata.siteUrl}${post.fields.slug}`}
@@ -120,6 +175,7 @@ export const query = graphql`
 query($id: String!) {
   site {
     siteMetadata {
+      author
       title
       siteUrl
     }
@@ -132,6 +188,11 @@ query($id: String!) {
     html
     timeToRead
     frontmatter {
+      datetime(
+        formatString: "D MMMM, YYYY",
+        locale: "vi"
+      )
+      ldDatetime: datetime(formatString: "YYYY-MM-DD")
       title
       poster {
         local {
