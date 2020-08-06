@@ -26,7 +26,7 @@ export default ({
             "@id": "${siteMetadata.siteUrl}${post.fields.slug}"
           },
           "headline": "${post.frontmatter.title}",
-          "description": "${post.excerpt}",
+          "description": "${post.excerpt.replace('\n', ' ')}",
           "dateCreated": "${post.frontmatter.ldDatetime}",
           "datePublished": "${post.frontmatter.ldDatetime}",
           "dateModified": "${post.frontmatter.ldDatetime}",
